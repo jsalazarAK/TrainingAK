@@ -1,10 +1,18 @@
-h1
+.textStyle
   text-align: center
-  font-size: 300%
   line-height: 1
-  margin: 3% 7%
+  margin: 1% 4%
   background: #ffc600
-  font-family: 'Amatic SC', cursive
+  font-family: 'Amatic SC', cursive  
+
+    
+h1
+  font-size: 300%
+  @extend .textStyle
+
+h4
+  font-size: 80%
+  @extend .textStyle
 
 .score
   background: rgba(255, 255, 255, 0)
@@ -22,7 +30,7 @@ h1
   flex: 1 0 33.33%
   overflow: hidden
   position: relative
-  height: 160px
+  height: 180px
 
   &:after
     display: block
@@ -37,7 +45,7 @@ h1
 
 .mole
   background: url('./imgs/mole.svg') bottom center no-repeat
-  background-size: 60%
+  background-size: 80%
   position: absolute
   top: 100%
   width: 100%
@@ -53,3 +61,15 @@ button
   padding: 2.666667%
   font-size: x-large
   background-color: firebrick
+
+p
+  display: flex
+  height: 33.33333%
+  text-align: center
+  font-size: 30px
+  margin-bottom: 0px
+  margin-top: 0px
+  justify-content: center
+  align-items: center
+
+    

@@ -2,26 +2,54 @@ const game = new Game();
 game.initialize();
 
 function Game() {
+    
+    const PLAYER_LABEL = "Player";
+    const SCORE_LABEL = "Score";
+    const RANKING_LABEL = "Ranking";
+    const NEW_LEVEL = 5; // AMOUNT OF POINTS NEEDED TO INCREASE YOUR LEVEL
+    const SPEED_REDUCTION = 0.05; // MORE LVL
+    const GAME_TIME = 500000;
+
     const holes = document.querySelectorAll('.hole');
     const scoreBoard = document.querySelector('.score');
-
+    const levelBoard = document.querySelector('.level');
     const audioFailure = document.querySelector('audio[data-key="fail"]');
     const audioSuccess = document.querySelector('audio[data-key="success"]');
-
     const moles = document.querySelectorAll('.mole');
 
-    const minPeepTime = 200;
-    const maxPeepTime = 1000;
+    const minPeepTime = 500;
+    const maxPeepTime = 1300;
     let lastHole;
     let timeUp = true;
     let score = 0;
+    let actualLevel = 0;
+    let ranking = [
+        {[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:0},
+        {[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:0},
+        {[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:0},
+        {[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:0},
+        {[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:0}
+    ]
 
     this.initialize = () => {
         moles.forEach(mole => mole.addEventListener('click', this.bonk));
         holes.forEach(hole => hole.addEventListener('click', this.fail));
+        var data = window.localStorage.getItem(RANKING_LABEL);
+        if(data!=null){
+            ranking = JSON.parse(data);
+        }
+        this.updateData(ranking);
     }
 
-    this.randomTime = (min, max) => {
+    this.randomTime = (min, max,) => {
+        let percent = 1-SPEED_REDUCTION*actualLevel;
+        if(percent<0){
+            percent=0;
+        }
+        //Set new min / max value
+        min=min*percent;
+        max=max*percent;
+
         return Math.round(Math.random() * (max - min) + min);
     }
 
@@ -45,10 +73,17 @@ function Game() {
 
     this.startGame = () => {
         scoreBoard.textContent = 0;
+        actualLevel = 0;
+        levelBoard.textContent = actualLevel+1;
+
         timeUp = false;
         score = 0;
         this.peep();
-        setTimeout(() => timeUp = true, 10000)
+        setTimeout(() => {
+            timeUp = true;
+            this.updateRanking();
+        
+        }, GAME_TIME)
     }
 
     this.bonk = e => {
@@ -61,8 +96,12 @@ function Game() {
         audioSuccess.currentTime=0;
         audioSuccess.play();
         score++;
+        if(score%NEW_LEVEL==0){
+            actualLevel++;
+        }
         e.target.classList.remove('up');
         scoreBoard.textContent = score;
+        levelBoard.textContent = actualLevel+1;
     }
 
     this.fail = e => {
@@ -78,6 +117,63 @@ function Game() {
         
         
     }
+
+    this.updateRanking=()=>{
+        for (var index = 0; index < ranking.length; index++) {
+                if( ranking[index][SCORE_LABEL] <score){
+                    ranking.splice(index,0,{[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:score});
+                    ranking.splice(ranking.length-1,1);
+                    break;
+                }
+        }
+        this.updateData(ranking);
+    }
+
+    this.updateData=(data)=>{
+          // EXTRACT VALUE FOR HTML HEADER. 
+        // ('PLAYER, 'SCORE')
+        window.localStorage.setItem(RANKING_LABEL,JSON.stringify(data));
+
+        var col = [];
+        for (var index = 0; index < data.length; index++) {
+            for (var key in data[index]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var index = 0; index < col.length; index++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[index];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var index = 0; index < data.length; index++) {
+
+            tr = table.insertRow(-1);
+
+            for (var matrix = 0; matrix < col.length; matrix++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = data[index][col[matrix]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+
+    
 }
 
 

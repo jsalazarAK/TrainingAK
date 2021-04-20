@@ -1,10 +1,17 @@
-h1 {
+.textStyle, h1, h4 {
   text-align: center;
-  font-size: 300%;
   line-height: 1;
-  margin: 3% 7%;
+  margin: 1% 4%;
   background: #ffc600;
   font-family: 'Amatic SC', cursive;
+}
+
+h1 {
+  font-size: 300%;
+}
+
+h4 {
+  font-size: 80%;
 }
 
 .score {
@@ -30,7 +37,7 @@ h1 {
           flex: 1 0 33.33%;
   overflow: hidden;
   position: relative;
-  height: 160px;
+  height: 180px;
 }
 
 .hole:after {
@@ -47,7 +54,7 @@ h1 {
 
 .mole {
   background: url("./imgs/mole.svg") bottom center no-repeat;
-  background-size: 60%;
+  background-size: 80%;
   position: absolute;
   top: 100%;
   width: 100%;
@@ -66,5 +73,22 @@ button {
   padding: 2.666667%;
   font-size: x-large;
   background-color: firebrick;
+}
+
+p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 33.33333%;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=game.css.map */
