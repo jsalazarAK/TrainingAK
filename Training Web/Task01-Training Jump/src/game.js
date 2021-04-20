@@ -8,17 +8,18 @@ function Game() {
     const RANKING_LABEL = "Ranking";
     const NEW_LEVEL = 5; // AMOUNT OF POINTS NEEDED TO INCREASE YOUR LEVEL
     const SPEED_REDUCTION = 0.05; // MORE LVL
-    const GAME_TIME = 500000;
+    const GAME_TIME = 10000; //time on miliseconds
 
     const holes = document.querySelectorAll('.hole');
     const scoreBoard = document.querySelector('.score');
+    const PlayerName = document.getElementById('playerName');
     const levelBoard = document.querySelector('.level');
     const audioFailure = document.querySelector('audio[data-key="fail"]');
     const audioSuccess = document.querySelector('audio[data-key="success"]');
     const moles = document.querySelectorAll('.mole');
-
     const minPeepTime = 500;
     const maxPeepTime = 1300;
+
     let lastHole;
     let timeUp = true;
     let score = 0;
@@ -121,7 +122,11 @@ function Game() {
     this.updateRanking=()=>{
         for (var index = 0; index < ranking.length; index++) {
                 if( ranking[index][SCORE_LABEL] <score){
-                    ranking.splice(index,0,{[PLAYER_LABEL]:"Anonymous",[SCORE_LABEL]:score});
+                    let playerNameTmp = PlayerName.value;
+                    if(playerNameTmp==""){
+                        playerNameTmp="Anonymous";
+                    }
+                    ranking.splice(index,0,{[PLAYER_LABEL]:playerNameTmp,[SCORE_LABEL]:score});
                     ranking.splice(ranking.length-1,1);
                     break;
                 }

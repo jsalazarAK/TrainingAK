@@ -10,28 +10,7 @@
 <body>
   <h1>Whack-a-mole!</h1>
   <h4>Level: <span class="level">1</span> Score: <span class="score">0</span></h4>
-  <!--<table>
-    <tr>
-      <th>Player</th>
-      <th>Score</th> 
-    </tr>
-    <tr>
-      <td>Jonathan</td>
-      <td>4</td> 
-    </tr>
-    <tr>
-      <td>Josselin</td>
-      <td>3</td> 
-    </tr>
-    <tr>
-      <td>prueba</td>
-      <td>1</td> 
-    </tr>
-    <tr>
-      <td>pruebaa</td>
-      <td>0</td> 
-    </tr>
-  </table>-->
+
   <p id="showData"></p>
 
   <div class="game">
@@ -63,7 +42,11 @@
       <div class="mole"></div>
     </div>
   </div>
-  <button onClick="game.startGame()">WHACK!</button>
+  <div>
+    <button onClick="game.startGame()">WHACK!</button>
+    <input type="text" id="playerName" placeholder= "Player Name"/>
+  </div>
+  
   <audio data-key="fail" src="src/assets/sounds/hihat.wav"></audio>
   <audio data-key="success" src="src/assets/sounds/kick.wav"></audio>
   <script src="src/game.js"></script>

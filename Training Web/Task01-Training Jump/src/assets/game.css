@@ -1,4 +1,4 @@
-.textStyle, h1, h4 {
+.textStyle, h1, h4, input {
   text-align: center;
   line-height: 1;
   margin: 1% 4%;
@@ -73,6 +73,16 @@ button {
   padding: 2.666667%;
   font-size: x-large;
   background-color: firebrick;
+}
+
+input {
+  position: absolute;
+  left: 40%;
+  border-radius: 16px;
+  position: absolute;
+  height: 60px;
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 p {
