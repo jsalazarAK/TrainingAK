@@ -61,10 +61,12 @@ h4 {
   height: 100%;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  cursor: url("./imgs/hammer.png"), auto !important;
 }
 
 .hole.up .mole {
   top: 0;
+  cursor: url("./imgs/hammer.png"), auto !important;
 }
 
 button {

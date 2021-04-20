@@ -6,6 +6,10 @@
   font-family: 'Amatic SC', cursive;
 }
 
+.cursor, .mole, .hole.up .mole {
+  cursor: url("./imgs/hammer.png"), auto !important;
+}
+
 h1 {
   font-size: 300%;
 }

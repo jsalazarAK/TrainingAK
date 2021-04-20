@@ -13,6 +13,7 @@ function Game() {
     const holes = document.querySelectorAll('.hole');
     const scoreBoard = document.querySelector('.score');
     const PlayerName = document.getElementById('playerName');
+    const ButtonStart = document.getElementById('button');
     const levelBoard = document.querySelector('.level');
     const audioFailure = document.querySelector('audio[data-key="fail"]');
     const audioSuccess = document.querySelector('audio[data-key="success"]');
@@ -76,6 +77,8 @@ function Game() {
         scoreBoard.textContent = 0;
         actualLevel = 0;
         levelBoard.textContent = actualLevel+1;
+        ButtonStart.disabled=true;
+        PlayerName.disabled=true;
 
         timeUp = false;
         score = 0;
@@ -83,6 +86,8 @@ function Game() {
         setTimeout(() => {
             timeUp = true;
             this.updateRanking();
+            ButtonStart.disabled=false;
+            PlayerName.disabled=false;
         
         }, GAME_TIME)
     }

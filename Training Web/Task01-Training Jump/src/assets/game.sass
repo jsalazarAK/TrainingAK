@@ -1,3 +1,6 @@
+/*
+    To Extend later
+    */
 .textStyle
   text-align: center
   line-height: 1
@@ -5,7 +8,42 @@
   background: #ffc600
   font-family: 'Amatic SC', cursive  
 
+.cursor
+  cursor: url('./imgs/hammer.png'), auto !important
+
     
+/*
+    Native objects
+*/
+ button
+  position: absolute
+  left: 20%
+  padding: 2.666667%
+  font-size: x-large
+  background-color: firebrick
+
+input 
+  position: absolute
+  left: 40%
+  border-radius: 16px 
+  position: absolute
+  height: 60px
+  font-size: 20px
+  margin-top: 5px
+  @extend .textStyle
+  
+
+p
+  display: flex
+  height: 33.33333%
+  text-align: center
+  font-size: 30px
+  margin-bottom: 0px
+  margin-top: 0px
+  justify-content: center
+  align-items: center
+
+
 h1
   font-size: 300%
   @extend .textStyle
@@ -13,6 +51,10 @@ h1
 h4
   font-size: 80%
   @extend .textStyle
+
+/*
+    Custom objects
+*/
 
 .score
   background: rgba(255, 255, 255, 0)
@@ -51,36 +93,13 @@ h4
   width: 100%
   height: 100%
   transition: all 0.4s
+  @extend .cursor
 
 .hole.up .mole
   top: 0
-
-button
-  position: absolute
-  left: 20%
-  padding: 2.666667%
-  font-size: x-large
-  background-color: firebrick
-
-input 
-  position: absolute
-  left: 40%
-  border-radius: 16px 
-  position: absolute
-  height: 60px
-  font-size: 20px
-  margin-top: 5px
-  @extend .textStyle
+  @extend .cursor
   
 
-p
-  display: flex
-  height: 33.33333%
-  text-align: center
-  font-size: 30px
-  margin-bottom: 0px
-  margin-top: 0px
-  justify-content: center
-  align-items: center
+
 
     
