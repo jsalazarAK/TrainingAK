@@ -8,7 +8,7 @@ function Game() {
     const RANKING_LABEL = "Ranking";
     const NEW_LEVEL = 5; // AMOUNT OF POINTS NEEDED TO INCREASE YOUR LEVEL
     const SPEED_REDUCTION = 0.05; // MORE LVL
-    const GAME_TIME = 20000; //time on miliseconds
+    const GAME_TIME = 10000; //time on miliseconds
 
     const holes = document.querySelectorAll('.hole');
     const scoreBoard = document.querySelector('.score');
