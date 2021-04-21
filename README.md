@@ -1,22 +1,34 @@
 PR TrainingAK:
 
-
-//TODO(CHANGE THIS LATER)
 **Requirements: **
 
-#Detailed list of problem requirements can be taken from the training guide
+● change css to sass
+● make the website resposive
+● Add 3 more moles, 1 extra line at the end, 9 in total
+● Add sound when hit and another one when fail
+● Add a score table
+● Save score table at local storage
+● at an input next to "whanck" button, to allow the player save its name
+● Save the top 5 high score
+● Add a level, when score is more than 5, speed is increased (this whas implemented as infinite levels, each lvl is 5% faster than the other, every 5 points, there is a new level. There is a visual text for the actual lvl )
+● Add an image to the game
+(https://www.stickpng.com/img/download/5a0590e59cf05203c4b60412/image)
 
-**Brief description: ** ##A brief description of the implemented solution, if I use something more than indicated or if you had any difficulty
 
---
+
 
 
 PR TrainingAK: Task #01: Training Jump
 
 Requirements:
-
-    Using only CSS and HTML, create a page like the following: You must use at least 1 Google Font to style the texts and titles. For the image use this url as src https://via.placeholder.com/175
-
--- Brief description: Chuck Norris in the house !! 
-
-PR name match with the ticket respective in Trello. #DELETE THIS#
+● change css to sass
+● make the website resposive
+● Add 3 more moles, 1 extra line at the end, 9 in total
+● Add sound when hit and another one when fail
+● Add a score table
+● Save score table at local storage
+● at an input next to "whanck" button, to allow the player save its name
+● Save the top 5 high score
+● Add a level, when score is more than 5, speed is increased (this whas implemented as infinite levels, each lvl is 5% faster than the other, every 5 points, there is a new level. There is a visual text for the actual lvl )
+● Add an image to the game
+(https://www.stickpng.com/img/download/5a0590e59cf05203c4b60412/image)
