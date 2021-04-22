@@ -1,0 +1,10 @@
+.App {
+  box-sizing: border-box;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+html{
+  background: #ffc600;
+}
