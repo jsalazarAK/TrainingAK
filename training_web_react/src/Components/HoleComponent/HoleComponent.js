@@ -3,15 +3,18 @@ import { Mole } from '../MoleComponent/MoleComponent';
 import './HoleComponent.css'
 
 export class Hole extends React.Component{
-
     
 
-    render(){
-        const showMole=()=>{
-            return 'up';
+    getClassName=()=>{
+        if(this.props.play && this.props.keyValue === this.props.lastHole){
+            return "hole up";
         }
+        return "hole";
+    }
+
+    render(){
         return (
-            <div className="hole up">
+            <div className={this.getClassName()}>
                 <Mole onButtonClick={this.props.onButtonClick}/>
             </div>
 
