@@ -3,8 +3,7 @@ import './App.css';
 import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer'
-import useSound from 'use-sound';
- 
+
 
 export default class App extends React.Component {
 
@@ -19,6 +18,7 @@ export default class App extends React.Component {
   increaseScore=(event)=>{
     event.stopPropagation();
     console.log("buen golpe")
+    //useSound("../../sounds/hithat.wav");
     if(this.state.initGame)
       this.setState({score:this.state.score +1})
   }
