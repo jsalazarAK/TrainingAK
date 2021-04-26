@@ -1,5 +1,7 @@
 button {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 15rem;
     padding: 2rem;
     font-size: x-large;

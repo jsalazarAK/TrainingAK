@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Header } from './Components/HeaderComponent/HeaderComponent';
 import { Game } from './Components/GameComponent/GameComponent';
-import { Footer} from './Components/FooterComponent/FooterComponent'
+import Footer from './Components/Footer'
 
 export class App extends React.Component {
 
