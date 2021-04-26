@@ -8,7 +8,7 @@ const Game =(props)=>{
     return (
         <div className="game">
             {holes.map((number)=>
-                <Hole key={number} play={props.play} keyValue={number} lastHole={props.lastHole} onButtonClick={props.onButtonClick}/>
+                <Hole key={number} play={props.play} keyValue={number} lastHole={props.lastHole} onButtonClick={props.onButtonClick} onFailButton={props.onFailButton}/>
             )}
         </div>
     );

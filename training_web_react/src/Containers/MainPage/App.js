@@ -3,6 +3,8 @@ import './App.css';
 import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer'
+import useSound from 'use-sound';
+ 
 
 export default class App extends React.Component {
 
@@ -14,10 +16,17 @@ export default class App extends React.Component {
     minPeepTime: 200,
     maxPeepTime: 1000
   }
-  increaseScore=()=>{
+  increaseScore=(event)=>{
+    event.stopPropagation();
+    console.log("buen golpe")
     if(this.state.initGame)
       this.setState({score:this.state.score +1})
   }
+
+  failHit=(event)=>{
+    console.log("mal golpe")
+  }
+
   StartGame=()=>{
     this.setState({initGame: true,score:0},()=>this.peep())
     
@@ -34,8 +43,6 @@ export default class App extends React.Component {
 
   randomHole = () => {
     const idx = Math.floor(Math.random() * this.state.holes);
-    console.log("hole selected")
-    console.log(idx)
     if (idx === this.state.lastHole) return this.randomHole();
     this.setState({lastHole: idx})
   }
@@ -43,10 +50,6 @@ export default class App extends React.Component {
   peep = () => {
     this.randomHole();
     let time = this.randomTime(this.state.minPeepTime,this.state.maxPeepTime)
-    console.log("random time")
-    console.log(time)
-    console.log("init game")
-    console.log(this.state.initGame)
     if(this.state.initGame){
       setTimeout(() => {
         this.peep()
@@ -59,7 +62,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <Header score={this.state.score}/>
-        <Game numberOfHoles={this.state.holes} lastHole={this.state.lastHole} play={this.state.initGame} onButtonClick={this.increaseScore}/>
+        <Game numberOfHoles={this.state.holes} lastHole={this.state.lastHole} play={this.state.initGame} onButtonClick={this.increaseScore} onFailButton={this.failHit}/>
         <Footer onButtonClick={this.StartGame}/>
       </div>
     );

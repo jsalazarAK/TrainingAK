@@ -13,7 +13,7 @@ const Hole=(props)=>{
     }
 
     return (
-        <div className={getClassName()}>
+        <div className={getClassName()} onClick={props.onFailButton}>
             <Mole onButtonClick={props.onButtonClick}/>
         </div>
 
