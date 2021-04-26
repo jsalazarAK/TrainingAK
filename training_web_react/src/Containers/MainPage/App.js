@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { Header } from './Components/HeaderComponent/HeaderComponent';
-import { Game } from './Components/GameComponent/GameComponent';
-import Footer from './Components/Footer'
+import Header from '../../Components/Header';
+import Game from '../../Components/Game';
+import Footer from '../../Components/Footer'
 
-export class App extends React.Component {
+export default class App extends React.Component {
 
   state={
     score:0,
