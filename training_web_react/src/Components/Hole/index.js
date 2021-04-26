@@ -1,6 +1,6 @@
 import React from 'react';
 import Mole  from '../Mole';
-import './HoleComponent.css'
+import './Hole.css'
 
 const Hole=(props)=>{
     

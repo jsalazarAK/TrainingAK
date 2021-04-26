@@ -1,5 +1,5 @@
 import React from 'react';
-import './GameComponent.css'
+import './Game.css'
 import  Hole  from "../Hole";
 
 const Game =(props)=>{

@@ -1,5 +1,5 @@
 import React from 'react';
-import './MoleComponent.css'
+import './Mole.css'
 
 const Mole=(props)=>{
     return (

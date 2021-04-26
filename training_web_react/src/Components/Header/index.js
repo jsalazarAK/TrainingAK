@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeaderComponent.css'
+import './Header.css'
 
 const Header =(props)=>{
     return (<h1>Whack-a-Mole! <span>{props.score}</span> </h1>);
