@@ -8,7 +8,7 @@ export default class App extends React.Component {
 
   state={
     score:0,
-    holes:6,
+    holes:9,
     initGame:false,
     lastHole:-1,
     minPeepTime: 200,

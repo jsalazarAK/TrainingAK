@@ -1,6 +1,6 @@
 .game {
-  width: 600px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

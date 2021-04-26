@@ -2,15 +2,10 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  left: 15rem;
-  padding: 2rem;
+  left: 20%;
+  padding: 2.666667%;
   font-size: x-large;
   background-color: firebrick;
+  margin-left: 40%;
 }
 /*# sourceMappingURL=Footer.css.map */
