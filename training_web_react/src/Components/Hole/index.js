@@ -6,7 +6,7 @@ const Hole=(props)=>{
     const getClassName = `hole ${props.play && props.keyValue === props.lastHole?'up':''}`;
 
     return (
-        <div className={getClassName()} onClick={props.onHitFail}>
+        <div className={getClassName} onClick={props.onHitFail}>
             <Mole onHitSuccess={props.onHitSuccess}/>
         </div>
 
