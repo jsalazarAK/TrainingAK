@@ -1,67 +1,104 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect, useRef, useState } from 'react';
+import './App.sass';
 import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer'
 
-export default class App extends React.Component {
 
-  state={
-    score:0,
-    holes:9,
-    initGame:false,
-    lastHole:-1,
-    minPeepTime: 200,
-    maxPeepTime: 1000
+const App =(props) =>{
+
+  //useHooks();
+
+  const soundFail = "src/sounds/kick.wav";
+  const soundHit = "src/sounds/hihat.wav";
+
+
+  const [score,setScore] = useState(0)
+  const [holes] = useState(9)
+  const [initGame,setInitGame] = useState(false)
+  const [lastHole,setLastHole] = useState(0)
+  const playSoundFail = new Audio(soundFail)
+  const playSoundHit = new Audio(soundHit)
+
+  const minPeepTime= 200;
+  const maxPeepTime= 1000;
+  
+  const startPeep = useRef(false);
+
+  
+  const playSound=(promise)=>{
+    if(promise!== null){
+      promise.then(()=>{
+
+      }).catch((err)=>{
+
+      });
+    }
   }
-  increaseScore=()=>{
-    if(this.state.initGame)
-      this.setState({score:this.state.score +1})
+
+
+  const IncreaseScore=(event)=>{
+    event.stopPropagation();
+    playSound(playSoundHit.play())
+    if(initGame){
+      setScore(previus => previus+1)
+    }
   }
-  StartGame=()=>{
-    this.setState({initGame: true,score:0},()=>this.peep())
-    
+
+  const failHit=(event)=>{
+    playSound(playSoundFail.play())
+  }
+
+  const StartGame=()=>{
+    setInitGame(true)
+    setLastHole(-1)
+    setScore(0)
+
     setTimeout(() => {
-      this.setState({lastHole:-1,initGame: false})
+      setInitGame(false)
+      setLastHole(-1)
       
   }, 10000)
   }
 
-  randomTime = (min, max) => {
+  const randomTime = (min, max) => {
     return Math.round(Math.random() * (max - min) + min);
   };
 
 
-  randomHole = () => {
-    const idx = Math.floor(Math.random() * this.state.holes);
-    console.log("hole selected")
-    console.log(idx)
-    if (idx === this.state.lastHole) return this.randomHole();
-    this.setState({lastHole: idx})
+  const randomHole = () => {
+    const idx = Math.floor(Math.random() * holes);
+    if (idx === lastHole){
+      return randomHole();
+    } 
+    setLastHole(idx)
   }
 
-  peep = () => {
-    this.randomHole();
-    let time = this.randomTime(this.state.minPeepTime,this.state.maxPeepTime)
-    console.log("random time")
-    console.log(time)
-    console.log("init game")
-    console.log(this.state.initGame)
-    if(this.state.initGame){
+  const peep = () => {
+    if(startPeep.current){
+      randomHole();
+      let time = randomTime(minPeepTime,maxPeepTime)
       setTimeout(() => {
-        this.peep()
+        peep()
       }, time)
     }
   }
 
-  render(){
+  useEffect(()=>{
+    startPeep.current = initGame;
+    if(initGame){
+      peep()
+    }
+  },[initGame])
 
-    return (
-      <div className="App">
-        <Header score={this.state.score}/>
-        <Game numberOfHoles={this.state.holes} lastHole={this.state.lastHole} play={this.state.initGame} onButtonClick={this.increaseScore}/>
-        <Footer onButtonClick={this.StartGame}/>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Header score={score}/>
+      <Game numberOfHoles={holes} lastHole={lastHole} play={initGame} onHitSuccess={IncreaseScore} onHitFail={failHit}/>
+      <Footer onButtonClick={StartGame}/>
+    </div>
+  );
+  
 }
+
+export default App
