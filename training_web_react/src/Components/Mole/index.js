@@ -1,5 +1,5 @@
 import React from 'react';
-import './Mole.css'
+import './Mole.sass'
 
 const Mole=(props)=>{
     return (

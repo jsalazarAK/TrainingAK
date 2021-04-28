@@ -1,6 +1,6 @@
 import React from 'react';
 import Mole  from '../Mole';
-import './Hole.css'
+import './Hole.sass'
 
 const Hole=(props)=>{
     

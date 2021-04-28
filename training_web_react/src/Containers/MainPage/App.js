@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './App.css';
+import './App.sass';
 import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer'
-import useSound from 'use-sound';
 
 
 const App =(props) =>{
@@ -18,8 +17,8 @@ const App =(props) =>{
   const [holes] = useState(9)
   const [initGame,setInitGame] = useState(false)
   const [lastHole,setLastHole] = useState(0)
-  const [playSoundFail] = useSound(soundFail)
-  const [playSoundHit] = useSound(soundHit)
+  const playSoundFail = new Audio(soundFail)
+  const playSoundHit = new Audio(soundHit)
 
   const minPeepTime= 200;
   const maxPeepTime= 1000;
@@ -27,18 +26,27 @@ const App =(props) =>{
   const startPeep = useRef(false);
 
   
+  const playSound=(promise)=>{
+    if(promise!== null){
+      promise.then(()=>{
+
+      }).catch((err)=>{
+
+      });
+    }
+  }
+
 
   const IncreaseScore=(event)=>{
     event.stopPropagation();
-    playSoundHit()
+    playSound(playSoundHit.play())
     if(initGame){
       setScore(previus => previus+1)
     }
   }
 
   const failHit=(event)=>{
-    console.log("fallo")
-    playSoundFail();
+    playSound(playSoundFail.play())
   }
 
   const StartGame=()=>{
@@ -47,7 +55,6 @@ const App =(props) =>{
     setScore(0)
 
     setTimeout(() => {
-      console.log("Game Over")
       setInitGame(false)
       setLastHole(-1)
       
@@ -71,24 +78,15 @@ const App =(props) =>{
     if(startPeep.current){
       randomHole();
       let time = randomTime(minPeepTime,maxPeepTime)
-
-      console.log("init game-----")
-      console.log(startPeep.current)
       setTimeout(() => {
-        console.log("init game#######")
-        console.log(startPeep.current)
         peep()
       }, time)
     }
   }
 
   useEffect(()=>{
-    console.log("init game");
-    console.log(initGame)
-    console.log("--------------")
     startPeep.current = initGame;
     if(initGame){
-      console.log("starting peep")
       peep()
     }
   },[initGame])
