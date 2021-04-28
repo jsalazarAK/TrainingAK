@@ -6,20 +6,14 @@ const Game =(props)=>{
 
     var _ = require('lodash')
     const holes = _.range(1,props.numberOfHoles+1); 
-    const renderHoles=()=>{
-         
-        return (
+    const renderHoles=
             holes.map((number)=>
-                <Hole key={number} play={props.play} keyValue={number} lastHole={props.lastHole} onButtonClick={props.onButtonClick} onFailButton={props.onFailButton}/>
-        
-            )
-        )
-    }
-
-     
+                <Hole key={number} play={props.play} keyValue={number} lastHole={props.lastHole} onHitSuccess={props.onHitSuccess} onHitFail={props.onHitFail}/>
+            );
+    
     return (
         <div className="game">
-            {renderHoles()}
+            {renderHoles}
         </div>
     );
 }

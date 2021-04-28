@@ -94,7 +94,7 @@ const App =(props) =>{
   return (
     <div className="App">
       <Header score={score}/>
-      <Game numberOfHoles={holes} lastHole={lastHole} play={initGame} onButtonClick={IncreaseScore} onFailButton={failHit}/>
+      <Game numberOfHoles={holes} lastHole={lastHole} play={initGame} onHitSuccess={IncreaseScore} onHitFail={failHit}/>
       <Footer onButtonClick={StartGame}/>
     </div>
   );
