@@ -56,21 +56,15 @@ const App =(props) =>{
           removeFromStore();
       }
     }
-  },[initGame,score,PlayerName])
+  },[initGame,score])
 
   useEffect(()=>{
     if(score>0 && score%NEW_LEVEL===0){
-      setActualLevel(previus => previus+1)
+      setActualLevel(previous => previous+1)
     }
   },[score])
 
 
-  /************************************
-  *************************************
-  ************FUNCTIONS****************
-  *************************************
-  *************************************
-  */
   
   const playSound=(promise)=>{
     if(promise!== null){
@@ -87,11 +81,11 @@ const App =(props) =>{
     event.stopPropagation();
     playSound(playSoundHit.play())
     if(initGame){
-      setScore(previus => previus+1);
+      setScore(previous => previous+1);
     }
   }
 
-  const failHit=(event)=>{
+  const failHit=()=>{
     playSound(playSoundFail.play());
   }
 
@@ -138,12 +132,6 @@ const App =(props) =>{
     }
   }
 
-  /************************************
-  *************************************
-  **************REDUX******************
-  *************************************
-  *************************************
-  */
   const addToStore=()=>{
     rankingStore.dispatch({
       type: actionTypes.ADD_RANKING,
@@ -163,12 +151,6 @@ const App =(props) =>{
     })
   }
 
-  /************************************
-  *************************************
-  *************RETURN******************
-  *************************************
-  *************************************
-  */
 
   return (
     <div className="App">
