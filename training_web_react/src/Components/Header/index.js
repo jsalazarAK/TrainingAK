@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import './Header.sass'
-import rankingStore from '../../Redux/Store/rankingStore';
+import rankingStore from '../../Store/Store/rankingStore';
 import RankingTable from '../Ranking';
 
 

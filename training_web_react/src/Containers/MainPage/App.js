@@ -3,8 +3,8 @@ import './App.sass';
 import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer';
-import rankingStore from '../../Redux/Store/rankingStore';
-import * as actionTypes from '../../Redux/ActionTypes/actionTypes'
+import rankingStore from '../../Store/Store/rankingStore';
+import * as actionTypes from '../../Store/Action/actionTypes'
 
 
 const App =(props) =>{
@@ -22,13 +22,6 @@ const App =(props) =>{
   const NEW_LEVEL = 5; // AMOUNT OF POINTS NEEDED TO INCREASE YOUR LEVEL
   const SPEED_REDUCTION = 0.05; // MORE LVL
 
-
-  /************************************
-  *************************************
-  **************HOOKS******************
-  *************************************
-  *************************************
-  */
 
   const [score,setScore] = useState(0)
   const [holes] = useState(9)
