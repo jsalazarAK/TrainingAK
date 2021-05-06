@@ -4,8 +4,7 @@ import Header from '../../Components/Header';
 import Game from '../../Components/Game';
 import Footer from '../../Components/Footer';
 import rankingStore from '../../Store/Store/rankingStore';
-import * as actionTypes from '../../Store/Action/actionTypes'
-
+import {addRanking,removeFromRanking} from '../../Store/Action/rankingActionCreator'
 
 const App =(props) =>{
 
@@ -126,22 +125,15 @@ const App =(props) =>{
   }
 
   const addToStore=()=>{
-    rankingStore.dispatch({
-      type: actionTypes.ADD_RANKING,
-      payload: {
-        playerName: PlayerName?PlayerName:"Anonymous",
-        playerScore: score
-      }
-    })
+    rankingStore.dispatch(
+      addRanking(PlayerName,score)
+    )
   }
 
   const removeFromStore=()=>{
-    rankingStore.dispatch({
-      type: actionTypes.REMOVE_FROM_RANKING,
-      payload: {
-        maxLength: MAX_RANKING_SIZE
-      }
-    })
+    rankingStore.dispatch(
+      removeFromRanking(MAX_RANKING_SIZE)
+    )
   }
 
 
